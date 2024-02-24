@@ -3,7 +3,7 @@ import SideBar from "./SideBar";
 
 const Home = () => {
   return (
-    <main>
+    <main className="flex h-full w-full">
       <SideBar />
       <ProductList />
     </main>

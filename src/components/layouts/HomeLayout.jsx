@@ -3,7 +3,7 @@ import Header from "../Header";
 
 const HomeLayout = () => {
   return (
-    <div>
+    <div className="font-poppins">
       <Header />
       <Outlet />
     </div>

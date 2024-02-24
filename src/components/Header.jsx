@@ -1,47 +1,79 @@
 const Header = () => {
   return (
-    <header>
-      <form>
+    <header className="bg-blue flex items-center text-xs text-white justify-end py-3 px-32">
+      <form className="flex items-center gap-2 rounded-xl bg-white mx-52">
         <input
+          className="outline-none placeholder:text-neutral-600 w-80 p-[10px] px-6 rounded-xl text-black font-medium"
           type="text"
           name="search"
-          placeholder="search any things"
+          placeholder="Search any things"
           id="search"
         />
-        <button type="submit">Search</button>
+        <button
+          className="bg-gold hover:bg-gold/85 h-full p-3 font-semibold rounded-xl px-6"
+          type="submit"
+        >
+          Search
+        </button>
       </form>
-      <div>
+      <div className="flex gap-8 font-light">
         <button>
           <svg
-            xmlns="http://www.w3.org/2000/svg"
+            width="18"
+            height="18"
+            viewBox="0 0 25 24"
             fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            className="w-6 h-6"
+            xmlns="http://www.w3.org/2000/svg"
           >
             <path
+              d="M13.4096 20.81C13.0696 20.93 12.5096 20.93 12.1696 20.81C9.26955 19.82 2.78955 15.69 2.78955 8.69C2.78955 5.6 5.27955 3.1 8.34955 3.1C10.1696 3.1 11.7796 3.98 12.7896 5.34C13.7996 3.98 15.4196 3.1 17.2296 3.1C20.2996 3.1 22.7896 5.6 22.7896 8.69C22.7896 15.69 16.3096 19.82 13.4096 20.81Z"
+              stroke="white"
+              strokeWidth="1.5"
               strokeLinecap="round"
               strokeLinejoin="round"
-              d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"
             />
           </svg>
-          WishList
         </button>
         <button>Sign In</button>
-        <button>
+        <button className="flex">
           <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
+            width="18"
+            height="18"
             viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            className="w-6 h-6"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
           >
             <path
+              d="M2 2H3.74001C4.82001 2 5.67 2.93 5.58 4L4.75 13.96C4.61 15.59 5.89999 16.99 7.53999 16.99H18.19C19.63 16.99 20.89 15.81 21 14.38L21.54 6.88C21.66 5.22 20.4 3.87 18.73 3.87H5.82001"
+              stroke="white"
+              strokeWidth="1.5"
+              strokeMiterlimit="10"
               strokeLinecap="round"
               strokeLinejoin="round"
-              d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z"
+            />
+            <path
+              d="M16.25 22C16.9404 22 17.5 21.4404 17.5 20.75C17.5 20.0596 16.9404 19.5 16.25 19.5C15.5596 19.5 15 20.0596 15 20.75C15 21.4404 15.5596 22 16.25 22Z"
+              stroke="white"
+              strokeWidth="1.5"
+              strokeMiterlimit="10"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M8.25 22C8.94036 22 9.5 21.4404 9.5 20.75C9.5 20.0596 8.94036 19.5 8.25 19.5C7.55964 19.5 7 20.0596 7 20.75C7 21.4404 7.55964 22 8.25 22Z"
+              stroke="white"
+              strokeWidth="1.5"
+              strokeMiterlimit="10"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M9 8H21"
+              stroke="white"
+              strokeWidth="1.5"
+              strokeMiterlimit="10"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
           </svg>
           Cart
