@@ -8,7 +8,8 @@ export default {
         gold: "#eda415",
         beige: "#f4f8f5",
         grey: "#9A9A9A",
-        grey2: "#acacac",
+        grey2: "#dadada",
+        lightGrey: "#eeeeee",
         skyBlue: "#b3d4e5",
       },
       fontFamily: {

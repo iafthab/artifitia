@@ -1,6 +1,22 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import axios from "../config/api/axios";
 
 const SignIn = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleSignIn = async () => {
+    try {
+      const response = await axios.post("user/signIn", {
+        email,
+        password,
+      });
+      console.log(response.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
   return (
     <main className="w-screen font-montserrat text-center h-screen flex animate-fadeIn justify-center flex-row-reverse">
       <div className="bg-pattern bg-center bg-cover m-4 w-[30%] rounded-r-lg justify-center items-center flex flex-col gap-6 object-scale-down text-white">
@@ -58,6 +74,8 @@ const SignIn = () => {
               </defs>
             </svg>
             <input
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               className="outline-none placeholder:font-semibold placeholder:text-grey w-80 bg-transparent"
               type="email"
               name="email"
@@ -101,6 +119,8 @@ const SignIn = () => {
               </defs>
             </svg>
             <input
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
               className="outline-none placeholder:font-semibold placeholder:text-grey w-80 bg-transparent"
               type="password"
               placeholder="Password"
@@ -115,6 +135,7 @@ const SignIn = () => {
           </a>
 
           <button
+            onClick={handleSignIn}
             className="bg-gold px-10 uppercase my-4 w-2/3 rounded-full hover:bg-gold/80 py-4 mx-auto text-white"
             type="submit"
           >

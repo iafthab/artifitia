@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const Product = () => {
   return (
     <Link
-      to={"./1"}
+      to={"/home/1"}
       className="p-4 font-poppins flex flex-col overflow-hidden justify-between w-full h-full"
     >
       <div className="relative">

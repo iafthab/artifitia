@@ -1,11 +1,14 @@
 import Product from "./Product";
 import Dialog from "./Dialog";
 import AddCategory from "./AddCategory";
-import { useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import AddSubCategory from "./AddSubCategory";
 import AddProduct from "./AddProduct";
+import ProductContext from "../hooks/productContext";
+import { Outlet } from "react-router-dom";
 
 const ProductList = () => {
+  const { setDialog } = useContext(ProductContext);
   const [dialogContent, setDialogContent] = useState(null);
   const dialogRef = useRef(null);
 
@@ -20,10 +23,11 @@ const ProductList = () => {
 
   return (
     <main className="mx-auto h-full text-xs">
-      <section className="*:p-4 *:bg-gold *:text-white *:font-semibold *:rounded-2xl flex justify-end *:m-4 *:mr-0">
+      <form className="*:p-4 *:bg-gold *:text-white *:font-semibold *:rounded-2xl flex justify-end *:m-4 *:mr-0">
         <button
           onClick={() => {
             setDialogContent(<AddCategory />);
+            setDialog("category");
             toggleDialog();
           }}
           className="hover:bg-gold/80"
@@ -34,6 +38,7 @@ const ProductList = () => {
         <button
           onClick={() => {
             setDialogContent(<AddSubCategory />);
+            setDialog("subCategory");
             toggleDialog();
           }}
           className="hover:bg-gold/80"
@@ -44,6 +49,7 @@ const ProductList = () => {
         <button
           onClick={() => {
             setDialogContent(<AddProduct />);
+            setDialog("product");
             toggleDialog();
           }}
           className="hover:bg-gold/80"
@@ -51,7 +57,7 @@ const ProductList = () => {
         >
           Add Product
         </button>
-      </section>
+      </form>
       <section className="grid grid-cols-3 grid-rows-2 *:size-60 *:border-[1.5px] *:border-grey *:rounded-2xl gap-4 ">
         <Product />
         <Product />
@@ -66,11 +72,7 @@ const ProductList = () => {
         <p>Show 10 rows</p>
       </section>
 
-      <Dialog
-        title={"Add Category"}
-        toggleDialog={toggleDialog}
-        ref={dialogRef}
-      >
+      <Dialog toggleDialog={toggleDialog} ref={dialogRef}>
         {dialogContent}
       </Dialog>
     </main>

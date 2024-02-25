@@ -3,7 +3,7 @@ import { useState } from "react";
 const AddProduct = () => {
   //   const [variants, setVariants] = useState(1);
   return (
-    <section className="font-montserrat font-semibold text-base space-y-4">
+    <section className="font-montserrat bg-beige font-semibold text-base space-y-4">
       <h3 className="text-xl text-center font-semibold mx-auto">Add Product</h3>
       <form className="grid grid-rows-5 text-neutral-600 grid-cols-3 gap-4">
         <label htmlFor="title">Title:</label>

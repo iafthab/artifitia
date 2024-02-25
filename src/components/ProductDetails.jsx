@@ -54,19 +54,19 @@ const ProductDetails = () => {
           <div>
             <label htmlFor="ram"> Ram:</label>
             <button
-              className="selection:border-2 bg-grey/30 mx-4 selection:border-black px-[6px] py-[2px]"
+              className="selection:border-2 bg-lightGrey mx-4 selection:border-black px-[6px] py-[2px]"
               type="button"
             >
               4 GB
             </button>
             <button
-              className="selection:border-2 bg-grey/30 mx-4 selection:border-black px-[6px] py-[2px]"
+              className="selection:border-2 bg-lightGrey mx-4 selection:border-black px-[6px] py-[2px]"
               type="button"
             >
               8 GB
             </button>
             <button
-              className="selection:border-2 bg-grey/20 mx-4 selection:border-black px-[6px] py-[2px]"
+              className="selection:border-2 bg-lightGrey mx-4 selection:border-black px-[6px] py-[2px]"
               type="button"
             >
               16 GB
@@ -104,7 +104,7 @@ const ProductDetails = () => {
             >
               Buy it now
             </button>
-            <button type="button" className="bg-grey/35 rounded-full p-2">
+            <button type="button" className="bg-lightGrey rounded-full p-2">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"

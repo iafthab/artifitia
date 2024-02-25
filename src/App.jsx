@@ -10,6 +10,7 @@ import SignUp from "./components/SignUp";
 import HomeLayout from "./components/layouts/HomeLayout";
 import Home from "./components/Home";
 import ProductDetails from "./components/ProductDetails";
+import { ProductProvider } from "./hooks/productContext";
 
 function App() {
   const router = createBrowserRouter(
@@ -24,7 +25,11 @@ function App() {
       </Route>
     )
   );
-  return <RouterProvider router={router} />;
+  return (
+    <ProductProvider>
+      <RouterProvider router={router} />
+    </ProductProvider>
+  );
 }
 
 export default App;

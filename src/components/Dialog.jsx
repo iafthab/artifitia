@@ -1,19 +1,26 @@
 /* eslint-disable react/prop-types */
-import { forwardRef } from "react";
+import { forwardRef, useContext } from "react";
+import ProductContext from "../hooks/productContext";
 
 export const Dialog = forwardRef(function MyDialog(
   { children, toggleDialog },
   ref
 ) {
+  const { dialog, addCategory, addSubCategory } = useContext(ProductContext);
+
+  const onSubmit = () => {
+    dialog === "category" ? addCategory() : addSubCategory();
+  };
+
   return (
     <dialog ref={ref} className=" z-10 rounded-xl backdrop:bg-gray-800/50">
       <div className="w-fit p-10 flex flex-col gap-4">
         {children}
         <div className="flex flex-row font-montserrat justify-center space-x-4 font-medium text-xl mt-2">
           <button
-            className="hover:bg-gold/80 px-8 py-1 uppercase bg-gold text-white rounded-md"
+            className="hover:bg-gold/80 px-4 py-1 uppercase bg-gold text-white rounded-md"
             type="button"
-            // onClick={onSubmit}
+            onClick={onSubmit}
           >
             Add
           </button>
