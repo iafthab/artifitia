@@ -93,13 +93,13 @@ const ProductDetails = () => {
           </div>
           <div className="flex items-center">
             <button
-              className="py-4 hover:bg-gold/80 px-10 bg-gold text-white font-semibold rounded-2xl mr-4"
+              className="py-4 hover:bg-gold/80 px-10 bg-gold text-white font-semibold rounded-xl mr-4"
               type="button"
             >
               Edit Product
             </button>
             <button
-              className="py-4 hover:bg-gold/80 px-10 bg-gold text-white font-semibold rounded-2xl mr-4"
+              className="py-4 hover:bg-gold/80 px-10 bg-gold text-white font-semibold rounded-xl mr-4"
               type="button"
             >
               Buy it now

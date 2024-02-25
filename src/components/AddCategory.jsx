@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useContext } from "react";
+import ProductContext from "../hooks/productContext";
 
 const AddCategory = () => {
-  const [category, setCategory] = useState("");
+  const { category, setCategory } = useContext(ProductContext);
   return (
     <form className="font-montserrat text-base space-y-4">
       <h3 className="text-xl text-center font-semibold mx-auto">

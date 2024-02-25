@@ -1,4 +1,9 @@
+import { useContext } from "react";
+import ProductContext from "../hooks/productContext";
+import { Link } from "react-router-dom";
+
 const Header = () => {
+  const { user } = useContext(ProductContext);
   return (
     <header className="bg-blue flex items-center text-xs text-white justify-end py-3 px-32">
       <form className="flex items-center gap-2 rounded-xl bg-white mx-52">
@@ -34,7 +39,7 @@ const Header = () => {
             />
           </svg>
         </button>
-        <button>Sign In</button>
+        {!user ? <Link to={"/"}>Sign In</Link> : user}
         <button className="flex">
           <svg
             width="18"

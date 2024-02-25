@@ -1,19 +1,28 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "../config/api/axios";
+import ProductContext from "../hooks/productContext";
+import { useNavigate } from "react-router-dom";
 
 const SignIn = () => {
+  const navigate = useNavigate();
+  const { setUser } = useContext(ProductContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
-  const handleSignIn = async () => {
+  const handleSignIn = async (e) => {
+    e.preventDefault();
     try {
       const response = await axios.post("user/signIn", {
         email,
         password,
       });
+      setUser(response.data.name);
+      navigate("/home");
       console.log(response.data);
     } catch (err) {
+      setError(err.response.data.message);
       console.log(err);
     }
   };
@@ -37,6 +46,7 @@ const SignIn = () => {
           Sign In to
           <br /> Your Account
         </h2>
+        <p className="text-red-600 font-semibold">{error}</p>
         <form className="flex flex-col gap-4 text-black font-semibold">
           <div className="p-4 px-6 flex items-center rounded-lg gap-2 bg-beige">
             <svg

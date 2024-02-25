@@ -14,7 +14,7 @@ const Product = () => {
             className="-z-10 w-52 h-28 object-scale-down"
           />
         </div>
-        <button className="p-[6px] bg-skyBlue right-0 top-0 absolute rounded-full">
+        <button className="p-[6px] hover:bg-red-300/40 bg-skyBlue right-0 top-0 absolute rounded-full">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"

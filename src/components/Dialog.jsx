@@ -1,15 +1,44 @@
 /* eslint-disable react/prop-types */
 import { forwardRef, useContext } from "react";
 import ProductContext from "../hooks/productContext";
+import axios from "../config/api/axios";
 
 export const Dialog = forwardRef(function MyDialog(
   { children, toggleDialog },
   ref
 ) {
-  const { dialog, addCategory, addSubCategory } = useContext(ProductContext);
+  const { dialog, setCategory, category, setSubCategory, subCategory } =
+    useContext(ProductContext);
 
   const onSubmit = () => {
     dialog === "category" ? addCategory() : addSubCategory();
+  };
+
+  const addCategory = async () => {
+    try {
+      const response = await axios.post("category/", { name: category });
+      console.log(response.data);
+      toggleDialog();
+      setCategory("");
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const addSubCategory = async () => {
+    console.log("subcategory");
+    try {
+      const response = await axios.post("category/subcategory", {
+        categoryID: category,
+        subCategory,
+      });
+      console.log(response.data);
+      setSubCategory("");
+      setCategory("");
+      toggleDialog();
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (

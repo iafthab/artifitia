@@ -5,7 +5,6 @@ import { useContext, useRef, useState } from "react";
 import AddSubCategory from "./AddSubCategory";
 import AddProduct from "./AddProduct";
 import ProductContext from "../hooks/productContext";
-import { Outlet } from "react-router-dom";
 
 const ProductList = () => {
   const { setDialog } = useContext(ProductContext);
@@ -23,7 +22,7 @@ const ProductList = () => {
 
   return (
     <main className="mx-auto h-full text-xs">
-      <form className="*:p-4 *:bg-gold *:text-white *:font-semibold *:rounded-2xl flex justify-end *:m-4 *:mr-0">
+      <form className="*:p-4 *:bg-gold *:text-white *:font-semibold *:rounded-lg flex justify-end *:m-4 *:mr-0">
         <button
           onClick={() => {
             setDialogContent(<AddCategory />);

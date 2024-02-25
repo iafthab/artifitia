@@ -8,7 +8,7 @@ export default {
         gold: "#eda415",
         beige: "#f4f8f5",
         grey: "#9A9A9A",
-        grey2: "#dadada",
+        grey2: "#c7c7c7",
         lightGrey: "#eeeeee",
         skyBlue: "#b3d4e5",
       },

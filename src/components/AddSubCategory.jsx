@@ -1,4 +1,9 @@
+import { useContext } from "react";
+import ProductContext from "../hooks/productContext";
+
 const AddSubCategory = () => {
+  const { subCategory, setSubCategory, category, setCategory, categories } =
+    useContext(ProductContext);
   return (
     <form className="font-montserrat font-semibold text-base space-y-4">
       <h3 className="text-xl text-center mx-auto">Add Sub Category</h3>
@@ -6,17 +11,22 @@ const AddSubCategory = () => {
         className="outline-none border-2 text-grey  border-grey rounded-xl w-80 bg-transparent px-4 py-3"
         name="category"
         id="category"
+        value={category}
+        onChange={(e) => setCategory(e.target.value)}
       >
-        <option defaultValue value="id">
+        <option defaultValue hidden>
           Select category
         </option>
-        <option value="id">category1</option>
-        <option value="id2">category2</option>
-        <option value="id3">category3</option>
-        <option value="id4">category4</option>
+        {categories.map((category) => (
+          <option key={category._id} value={category._id}>
+            {category.name}
+          </option>
+        ))}
       </select>
       <br />
       <input
+        value={subCategory}
+        onChange={(e) => setSubCategory(e.target.value)}
         type="text"
         name="subCategory"
         id="subCategory"

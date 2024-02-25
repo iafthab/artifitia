@@ -6,8 +6,11 @@ const SignIn = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
 
-  const handleSignUp = async () => {
+  const handleSignUp = async (e) => {
+    e.preventDefault();
     try {
       const response = await axios.post("user/signUp", {
         name,
@@ -15,8 +18,11 @@ const SignIn = () => {
         password,
       });
       console.log(response.data);
+      setSuccess(response.data.message);
+      setError("");
     } catch (err) {
       console.log(err);
+      setError(err.response.data.message);
     }
   };
 
@@ -39,6 +45,8 @@ const SignIn = () => {
         <h2 className="text-gold text-center text-4xl font-bold">
           Create Account
         </h2>
+        <p className="text-red-600 font-semibold">{error}</p>
+        <p className="text-green-600 font-semibold">{success}</p>
         <form className="flex flex-col gap-4 text-black font-semibold">
           <div className="p-4 px-6 flex items-center rounded-lg gap-2 bg-beige">
             <svg
@@ -176,7 +184,7 @@ const SignIn = () => {
             />
           </div>
           <button
-            onClick={handleSignUp}
+            onClick={(e) => handleSignUp(e)}
             className="bg-gold px-10 uppercase my-4 w-2/3 rounded-full hover:bg-gold/80 py-4 mx-auto text-white"
             type="submit"
           >
