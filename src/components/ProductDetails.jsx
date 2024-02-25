@@ -1,29 +1,52 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import axios from "../config/api/axios";
 
 const ProductDetails = () => {
   const [qty, setQty] = useState(0);
+  const [prod, setProd] = useState("");
+  const [variant, setVariant] = useState("");
+  const { product } = useParams();
+
+  useEffect(() => {
+    const getProduct = async () => {
+      console.log("product fetching");
+      try {
+        const response = await axios.get("products/" + product);
+        setProd(response.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    getProduct();
+  }, [product]);
+
+  setTimeout(() => {
+    setVariant(prod?.variant);
+  }, 2000);
+
   return (
     <main className="w-screen h-full flex p-10 gap-10">
       <section className="w-2/5 *:border-[1.5px] grid grid-cols-2 grid-rows-6  *:border-grey *:rounded-2xl gap-4">
         <img
           alt="photo"
           className="-z-10 row-start-1 row-end-7 col-start-1 col-end-3 object-scale-down"
-          src="./../../images/61b8998441fcd29c0376cd30ecb9d2a8.jpg"
+          src="/img/61b8998441fcd29c0376cd30ecb9d2a8.jpg"
         />
         <img
           alt="photo"
           className="-z-10  object-scale-down"
-          src="./../../images/4d62621c3b0d0e10492367369bb995dc.png"
+          src="/img/4d62621c3b0d0e10492367369bb995dc.png"
         />
         <img
           alt="photo"
           className="-z-10  object-scale-down"
-          src="./../../images/e3bf67ba7efb5d8ff9981fa3476727be.png"
+          src="/img/e3bf67ba7efb5d8ff9981fa3476727be.png"
         />
       </section>
       <section className="w-2/5">
         <div className="space-y-3 my-4">
-          <h1 className="text-2xl font-medium text-blue">HP AMD Ryzen 3</h1>
+          <h1 className="text-2xl font-medium text-blue">{prod.name}</h1>
           <h2 className="font-semibold text-xl">$567.99 </h2>
           <div className="flex gap-4">
             <p className="font-semibold">Availability:</p>
@@ -53,24 +76,21 @@ const ProductDetails = () => {
         <div className="space-y-8 font-medium">
           <div>
             <label htmlFor="ram"> Ram:</label>
-            <button
-              className="selection:border-2 bg-lightGrey mx-4 selection:border-black px-[6px] py-[2px]"
-              type="button"
-            >
-              4 GB
-            </button>
-            <button
-              className="selection:border-2 bg-lightGrey mx-4 selection:border-black px-[6px] py-[2px]"
-              type="button"
-            >
-              8 GB
-            </button>
-            <button
-              className="selection:border-2 bg-lightGrey mx-4 selection:border-black px-[6px] py-[2px]"
-              type="button"
-            >
-              16 GB
-            </button>
+            {prod ? (
+              <>
+                {prod?.variants.map((v) => (
+                  <button
+                    type="button"
+                    key={v.ram}
+                    className="selection:border-2 bg-lightGrey mx-4 selection:border-black px-[6px] py-[2px]"
+                  >
+                    {v.ram}
+                  </button>
+                ))}
+              </>
+            ) : (
+              ""
+            )}
           </div>
           <div className="space-x-4 flex items-center">
             <label htmlFor="qty"> Quantity:</label>

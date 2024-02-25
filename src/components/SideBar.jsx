@@ -2,11 +2,13 @@ import { useContext } from "react";
 import ProductContext from "../hooks/productContext";
 
 const SideBar = () => {
-  const { categories } = useContext(ProductContext);
+  const { categories, getProductsBySubCategory, getProducts } =
+    useContext(ProductContext);
+
   return (
     <div className="accent-blue text-sm p-16 space-y-6 tracking-wide select-none">
       <h1 className="text-blue font-semibold ">Categories</h1>
-      <button>All Categories</button>
+      <button onClick={getProducts}>All Categories</button>
       {categories ? (
         <>
           {categories?.map((category, index) => (
@@ -32,9 +34,11 @@ const SideBar = () => {
                 <div key={index} className="flex items-center">
                   <input
                     className="m-2 w-5 h-5"
-                    type="checkbox"
-                    name={sub}
+                    type="radio"
+                    name="filter"
                     id={sub}
+                    value={sub}
+                    onClick={() => getProductsBySubCategory(sub)}
                   />
                   <label htmlFor={sub}>{sub}</label>
                 </div>

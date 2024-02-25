@@ -7,11 +7,44 @@ export const Dialog = forwardRef(function MyDialog(
   { children, toggleDialog },
   ref
 ) {
-  const { dialog, setCategory, category, setSubCategory, subCategory } =
-    useContext(ProductContext);
+  const {
+    dialog,
+    setCategory,
+    category,
+    subCategory,
+    setSubCategory,
+    productName,
+    setProductName,
+    ram1,
+    setRam1,
+    ram2,
+    setRam2,
+    ram3,
+    setRam3,
+    price1,
+    setPrice1,
+    price2,
+    setPrice2,
+    price3,
+    setPrice3,
+    qty1,
+    qty2,
+    qty3,
+    setQty1,
+    setQty2,
+    setQty3,
+    description,
+    setDescription,
+    // images,
+    // setImages,
+  } = useContext(ProductContext);
 
   const onSubmit = () => {
-    dialog === "category" ? addCategory() : addSubCategory();
+    dialog === "category"
+      ? addCategory()
+      : dialog === "product"
+      ? addProduct()
+      : addSubCategory();
   };
 
   const addCategory = async () => {
@@ -35,6 +68,37 @@ export const Dialog = forwardRef(function MyDialog(
       console.log(response.data);
       setSubCategory("");
       setCategory("");
+      toggleDialog();
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  const addProduct = async () => {
+    try {
+      await axios.post("products/", {
+        name: productName,
+        subCategory,
+        description,
+        variants: [
+          { qty: qty1, ram: ram1, price: price1 },
+          { qty: qty2, ram: ram2, price: price2 },
+          { qty: qty3, ram: ram3, price: price3 },
+        ],
+      });
+      setSubCategory("");
+      setProductName("");
+      setRam1("");
+      setRam2("");
+      setRam3("");
+      setPrice1("");
+      setPrice2("");
+      setPrice3("");
+      setQty1("");
+      setQty2("");
+      setQty3("");
+      setProductName("");
+      setCategory("");
+      setDescription("");
       toggleDialog();
     } catch (err) {
       console.log(err);

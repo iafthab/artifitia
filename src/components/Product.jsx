@@ -1,16 +1,17 @@
+/* eslint-disable react/prop-types */
 import { Link } from "react-router-dom";
 
-const Product = () => {
+const Product = ({ title, price, id }) => {
   return (
     <Link
-      to={"/home/1"}
+      to={"/home/" + id}
       className="p-4 font-poppins flex flex-col overflow-hidden justify-between w-full h-full"
     >
       <div className="relative">
         <div className="h-1/2 relative">
           <img
             alt="photo"
-            src="./../../images/61b8998441fcd29c0376cd30ecb9d2a8.jpg"
+            src="/img/61b8998441fcd29c0376cd30ecb9d2a8.jpg"
             className="-z-10 w-52 h-28 object-scale-down"
           />
         </div>
@@ -32,8 +33,8 @@ const Product = () => {
         </button>
       </div>
       <div className="font-semibold space-y-2 text-sm">
-        <p className=" text-blue tracking-tight">HP AMD Ryzen 3</p>
-        <p className="">$ 529.99</p>
+        <p className=" text-blue tracking-tight">{title}</p>
+        <p className="">{price}</p>
         <p className="flex gap-1">
           <svg
             xmlns="http://www.w3.org/2000/svg"

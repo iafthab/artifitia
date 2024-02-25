@@ -1,8 +1,25 @@
-# React + Vite
+# Artifitia
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+clone the project
 
-Currently, two official plugins are available:
+```bash
+  git clone https://github.com/iafthab/artifitia.git
+```
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Install dependencies
+
+```bash
+  npm install
+```
+
+Change baseURL at config/api/axios.js,
+
+```javascript
+    baseURL: "http://localhost:3500",
+```
+
+Run server
+
+```bash
+  npm run dev
+```

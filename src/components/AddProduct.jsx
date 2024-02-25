@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import ProductContext from "../hooks/productContext";
 
 const AddProduct = () => {
@@ -8,14 +8,35 @@ const AddProduct = () => {
     setSubCategory,
     productName,
     setProductName,
-    variants,
-    setVariants,
+    ram1,
+    setRam1,
+    ram2,
+    setRam2,
+    ram3,
+    setRam3,
+    price1,
+    setPrice1,
+    price2,
+    setPrice2,
+    price3,
+    setPrice3,
+    qty1,
+    qty2,
+    qty3,
+    setQty1,
+    setQty2,
+    setQty3,
     description,
     setDescription,
     categories,
     images,
     setImages,
   } = useContext(ProductContext);
+  const [varNum, setVarNum] = useState(1);
+
+  useEffect(() => {
+    setVarNum(1);
+  }, []);
 
   let subcategories = [];
   categories.map((category) => {
@@ -24,32 +45,14 @@ const AddProduct = () => {
     });
   });
 
-  const handleVariants = (index, key, e) => {
-    const object = variants[parseInt(index)];
-    object[key] = e.target.value;
-    setVariants([...variants, (variants[index] = object)]);
-  };
+  // const handleVariants = (index, key, e) => {
+  //   const object = variants[parseInt(index)];
+  //   object[key] = e.target.value;
+  //   setVariants(...variants, (variants[index] = object));
+  // };
 
-  const addVariants = () =>
-    setVariants([...variants, { Ram: "0", Price: "0", Qty: "0" }]);
-
-  const Variants = ({ objKey, value, index }) => {
-    return (
-      <div className="space-x-4 flex">
-        <label className="w-1/5 mt-3" htmlFor={objKey}>
-          {objKey}:
-        </label>
-        <input
-          value={value}
-          onChange={(e) => handleVariants(index, objKey, e)}
-          type="text"
-          name={objKey}
-          id="variants"
-          className="outline-none border-2 border-grey2 rounded-xl  placeholder:text-grey  w-32 bg-transparent px-4 py-3"
-        />
-      </div>
-    );
-  };
+  // const addVariants = () =>
+  //   setVariants([...variants, { Ram: "0", Price: "0", Qty: "0" }]);
 
   return (
     <section className="font-montserrat font-semibold text-[15px] space-y-4">
@@ -72,26 +75,136 @@ const AddProduct = () => {
           <label className="w-1/5 mt-3" htmlFor="variants">
             Variants:
           </label>
-          <div className="col-span-2 w-full space-y-4">
-            <div className="font-medium *:ml-4 justify-end w-full space-y-4">
-              {variants.map((v, index) => (
-                <div className="flex w-full justify-around" key={index}>
-                  {Object.entries(v).map(([key, value], index) => (
-                    <Variants
-                      objKey={key}
-                      index={index}
-                      value={value}
-                      key={key}
-                    />
-                  ))}
-                </div>
-              ))}
+          <div className="col-span-2 w-full space-y-4 font-medium *:ml-4 justify-end">
+            <div className="flex w-full justify-around">
+              <div className="space-x-4 flex">
+                <label className="w-1/5 mt-3" htmlFor="Ram">
+                  Ram:
+                </label>
+                <input
+                  value={ram1}
+                  onChange={(e) => setRam1(e.target.value)}
+                  type="text"
+                  id="variants"
+                  className="outline-none border-2 border-grey2 rounded-xl  placeholder:text-grey  w-32 bg-transparent px-4 py-3"
+                />
+              </div>
+              <div className="space-x-4 flex">
+                <label className="w-1/5 mt-3" htmlFor="Ram">
+                  Price:
+                </label>
+                <input
+                  value={price1}
+                  onChange={(e) => setPrice1(e.target.value)}
+                  type="text"
+                  id="variants"
+                  className="outline-none border-2 border-grey2 rounded-xl  placeholder:text-grey  w-32 bg-transparent px-4 py-3"
+                />
+              </div>
+              <div className="space-x-4 flex">
+                <label className="w-1/5 mt-3" htmlFor="Ram">
+                  Qty:
+                </label>
+                <input
+                  value={qty1}
+                  onChange={(e) => setQty1(e.target.value)}
+                  type="text"
+                  id="variants"
+                  className="outline-none border-2 border-grey2 rounded-xl  placeholder:text-grey  w-32 bg-transparent px-4 py-3"
+                />
+              </div>
             </div>
+            {varNum >= 2 ? (
+              <div className="flex w-full justify-around">
+                <div className="space-x-4 flex">
+                  <label className="w-1/5 mt-3" htmlFor="Ram">
+                    Ram:
+                  </label>
+                  <input
+                    value={ram2}
+                    onChange={(e) => setRam2(e.target.value)}
+                    type="text"
+                    id="variants"
+                    className="outline-none border-2 border-grey2 rounded-xl  placeholder:text-grey  w-32 bg-transparent px-4 py-3"
+                  />
+                </div>
+                <div className="space-x-4 flex">
+                  <label className="w-1/5 mt-3" htmlFor="Ram">
+                    Price:
+                  </label>
+                  <input
+                    value={price2}
+                    onChange={(e) => setPrice2(e.target.value)}
+                    type="text"
+                    id="variants"
+                    className="outline-none border-2 border-grey2 rounded-xl  placeholder:text-grey  w-32 bg-transparent px-4 py-3"
+                  />
+                </div>
+                <div className="space-x-4 flex">
+                  <label className="w-1/5 mt-3" htmlFor="Ram">
+                    Qty:
+                  </label>
+                  <input
+                    value={qty2}
+                    onChange={(e) => setQty2(e.target.value)}
+                    type="text"
+                    id="variants"
+                    className="outline-none border-2 border-grey2 rounded-xl  placeholder:text-grey  w-32 bg-transparent px-4 py-3"
+                  />
+                </div>
+              </div>
+            ) : (
+              ""
+            )}
+            {varNum >= 3 ? (
+              <div className="flex w-full justify-around">
+                <div className="space-x-4 flex">
+                  <label className="w-1/5 mt-3" htmlFor="Ram">
+                    Ram:
+                  </label>
+                  <input
+                    value={ram3}
+                    onChange={(e) => setRam3(e.target.value)}
+                    type="text"
+                    id="variants"
+                    className="outline-none border-2 border-grey2 rounded-xl  placeholder:text-grey  w-32 bg-transparent px-4 py-3"
+                  />
+                </div>
+                <div className="space-x-4 flex">
+                  <label className="w-1/5 mt-3" htmlFor="Ram">
+                    Price:
+                  </label>
+                  <input
+                    value={price3}
+                    onChange={(e) => setPrice3(e.target.value)}
+                    type="text"
+                    id="variants"
+                    className="outline-none border-2 border-grey2 rounded-xl  placeholder:text-grey  w-32 bg-transparent px-4 py-3"
+                  />
+                </div>
+                <div className="space-x-4 flex">
+                  <label className="w-1/5 mt-3" htmlFor="Ram">
+                    Qty:
+                  </label>
+                  <input
+                    value={qty3}
+                    onChange={(e) => setQty3(e.target.value)}
+                    type="text"
+                    id="variants"
+                    className="outline-none border-2 border-grey2 rounded-xl  placeholder:text-grey  w-32 bg-transparent px-4 py-3"
+                  />
+                </div>
+              </div>
+            ) : (
+              ""
+            )}
             <div className="flex justify-end">
               <button
                 type="button"
-                onClick={addVariants}
-                className="bg-black px-6 py-3 rounded-xl text-white font-medium"
+                onClick={() => setVarNum(varNum + 1)}
+                className={`${
+                  varNum >= 3 ? "hidden" : ""
+                } bg-black px-6 py-3 rounded-xl text-white font-medium`}
               >
                 Add Variants
               </button>
@@ -136,13 +249,26 @@ const AddProduct = () => {
           <label className="w-1/5 mt-3" htmlFor="uploadImage">
             Upload Image:
           </label>
-          <div className="w-[40rem]">
-            <div className="relative flex border-2 border-grey2 border-dashed justify-center items-center rounded-xl w-28 h-20">
+          <div className="w-[40rem] flex gap-2">
+            <div className="space-x-2">
+              {images
+                ? images?.map((img, index) => (
+                    <p className="text-black font-normal" key={index}>
+                      {img[0].name}
+                    </p>
+                  ))
+                : ""}
+            </div>
+            <div
+              className={`${
+                images.length >= 3 ? "hidden opacity-0" : ""
+              }relative flex border-2 border-grey2 border-dashed justify-center items-center rounded-xl w-28 h-20 cursor-pointer`}
+            >
               <svg
                 width="40"
                 height="40"
                 viewBox="0 0 40 40"
-                className=""
+                className="cursor-pointer"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
               >
@@ -152,11 +278,12 @@ const AddProduct = () => {
                 />
               </svg>
               <input
-                value={images}
-                onChange={(e) => setImages(e.target.value)}
+                disabled
+                onChange={(e) => setImages([...images, e.target.files])}
                 type="file"
                 name="uploadImage"
                 id="uploadImage"
+                multiple
                 className="outline-none opacity-0 cursor-pointer absolute size-28 z-10 top-0 col-span-2 border-2 border-grey2 rounded-xl  placeholder:text-grey font-medium bg-transparent px-4 py-3"
               />
             </div>
